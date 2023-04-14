@@ -44,3 +44,14 @@ export const loginUser = expressAsyncHandler(
     }
   }
 );
+
+export const getUsers = expressAsyncHandler(
+  async (req: any, res: any, next: any) => {
+    try {
+      const users = await User.find();
+      res.json(users);
+    } catch (error) {
+      next(error);
+    }
+  }
+);
